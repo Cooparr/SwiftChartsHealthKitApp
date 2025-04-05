@@ -67,7 +67,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "애플 건강 연결하기"
+            "value" : "Apple 건강 연결하기"
           }
         }
       }
@@ -101,7 +101,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "애플 건강 연동"
+            "value" : "Apple 건강 연동"
           }
         }
       }

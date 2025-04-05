@@ -12,6 +12,7 @@ struct HealthKitPermissionView: View {
     @Environment(HealthKitManager.self) private var healthKitManager
     @Environment(\.dismiss) private var dismiss
     @State private var isShowingHealthKitPermissions: Bool = false
+    @Binding var hasSeen: Bool
     
     var body: some View {
         VStack(spacing: 130) {
@@ -37,6 +38,10 @@ struct HealthKitPermissionView: View {
             .tint(.pink)
         }
         .padding(30)
+        .interactiveDismissDisabled()
+        .onAppear {
+            hasSeen = true
+        }
         .healthDataAccessRequest(
             store: healthKitManager.store,
             shareTypes: healthKitManager.types,
@@ -54,12 +59,12 @@ struct HealthKitPermissionView: View {
 }
 
 #Preview("English") {
-    HealthKitPermissionView()
+    HealthKitPermissionView(hasSeen: .constant(true))
         .environment(HealthKitManager())
 }
 
 #Preview("Korean") {
-    HealthKitPermissionView()
+    HealthKitPermissionView(hasSeen: .constant(true))
         .environment(\.locale, .init(identifier: "ko"))
         .environment(HealthKitManager())
 }
