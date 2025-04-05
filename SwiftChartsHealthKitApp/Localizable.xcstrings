@@ -12,6 +12,18 @@
         }
       }
     },
+    "Avg: 10K Steps" : {
+
+    },
+    "Dashboard" : {
+
+    },
+    "Last 28 Days" : {
+
+    },
+    "Selected Stat" : {
+
+    },
     "Steps" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -19,6 +31,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "단계"
+          }
+        }
+      }
+    },
+    "Weight" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "체중"
           }
         }
       }
