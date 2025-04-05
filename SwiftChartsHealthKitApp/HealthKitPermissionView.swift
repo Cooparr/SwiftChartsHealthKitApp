@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct HealthKitPermissionView: View {
+    
+    @Environment(HealthKitManager.self) private var healthKitManager
+    @Environment(\.dismiss) private var dismiss
+    @State private var isShowingHealthKitPermissions: Bool = false
+    
     var body: some View {
         VStack(spacing: 130) {
             VStack(alignment: .leading, spacing: 12) {
@@ -26,20 +31,35 @@ struct HealthKitPermissionView: View {
             }
             
             Button("HealthKitPermissionButtonTitle") {
-                print("Did tap")
+                isShowingHealthKitPermissions = true
             }
             .buttonStyle(.borderedProminent)
             .tint(.pink)
         }
         .padding(30)
+        .healthDataAccessRequest(
+            store: healthKitManager.store,
+            shareTypes: healthKitManager.types,
+            readTypes: healthKitManager.types,
+            trigger: isShowingHealthKitPermissions) { permissionResult in
+                switch permissionResult {
+                case .success:
+                    dismiss()
+                case .failure(let error):
+                    //TODO: Add error handling
+                    dismiss()
+                }
+            }
     }
 }
 
 #Preview("English") {
     HealthKitPermissionView()
+        .environment(HealthKitManager())
 }
 
 #Preview("Korean") {
     HealthKitPermissionView()
-        .environment(\.locale, Locale(identifier: "ko"))
+        .environment(\.locale, .init(identifier: "ko"))
+        .environment(HealthKitManager())
 }

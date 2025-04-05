@@ -55,9 +55,6 @@
         }
       }
     },
-    "HealthKitButtonTitle" : {
-
-    },
     "HealthKitPermissionButtonTitle" : {
       "extractionState" : "manual",
       "localizations" : {
