@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  DashboardView.swift
 //  SwiftChartsHealthKitApp
 //
 //  Created by Alexander Cooper on 04/04/2025.
@@ -34,7 +34,7 @@ enum HealthMetricContext: CaseIterable, Identifiable {
 }
 
 
-struct ContentView: View {
+struct DashboardView: View {
     
     @State private var selectedStat: HealthMetricContext = .steps
     
@@ -103,7 +103,7 @@ struct ContentView: View {
             .padding()
             .navigationTitle("Dashboard")
             .navigationDestination(for: HealthMetricContext.self) { healthMetricContext in
-                Text(healthMetricContext.title)
+                HealthDataListView(metric: healthMetricContext)
             }
         }
         .tint(selectedStat.metricColor)
@@ -111,10 +111,10 @@ struct ContentView: View {
 }
 
 #Preview("English") {
-    ContentView()
+    DashboardView()
 }
 
 #Preview("Korean") {
-    ContentView()
+    DashboardView()
         .environment(\.locale, Locale(identifier: "ko"))
 }
