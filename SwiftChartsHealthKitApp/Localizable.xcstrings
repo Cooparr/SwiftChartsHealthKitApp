@@ -55,6 +55,57 @@
         }
       }
     },
+    "HealthKitPermissionButtonTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Connect Apple Health"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple 건강 연결하기"
+          }
+        }
+      }
+    },
+    "HealthKitPermissionSubtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app displays your step and weight data in interactive charts.\n\nYou can also add new step or weight data to Apple Health from this app. Your data is private and secured."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이 앱은 사용자의 걸음 수와 체중 데이터를 대화형 차트로 표시합니다.\n\n이 앱에서 애플 건강에 새로운 걸음 수 또는 체중 데이터를 추가할 수도 있습니다. 사용자의 데이터는 비공개로 안전하게 보호됩니다."
+          }
+        }
+      }
+    },
+    "HealthKitPermissionTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Health Integration"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple 건강 연동"
+          }
+        }
+      }
+    },
     "Last 28 Days" : {
 
     },

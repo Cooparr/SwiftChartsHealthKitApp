@@ -36,6 +36,9 @@ enum HealthMetricContext: CaseIterable, Identifiable {
 
 struct DashboardView: View {
     
+    @Environment(HealthKitManager.self) private var hkManager
+    @AppStorage("hasSeenPermissionRequest") private var hasSeenPermissionRequest = false
+    @State private var isShowingPermissionSheet = false
     @State private var selectedStat: HealthMetricContext = .steps
     
     var body: some View {
@@ -101,10 +104,19 @@ struct DashboardView: View {
                 }
             }
             .padding()
+            .task {
+                isShowingPermissionSheet = !hasSeenPermissionRequest
+            }
             .navigationTitle("Dashboard")
             .navigationDestination(for: HealthMetricContext.self) { healthMetricContext in
                 HealthDataListView(metric: healthMetricContext)
             }
+            .sheet(isPresented: $isShowingPermissionSheet) {
+                //TODO: Fetch health data
+            } content: {
+                HealthKitPermissionView(hasSeen: $hasSeenPermissionRequest)
+            }
+
         }
         .tint(selectedStat.metricColor)
     }
@@ -112,9 +124,11 @@ struct DashboardView: View {
 
 #Preview("English") {
     DashboardView()
+        .environment(HealthKitManager())
 }
 
 #Preview("Korean") {
     DashboardView()
         .environment(\.locale, Locale(identifier: "ko"))
+        .environment(HealthKitManager())
 }
