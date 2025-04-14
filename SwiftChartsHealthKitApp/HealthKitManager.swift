@@ -18,6 +18,48 @@ import Observation
     ]
     
     
+    func fetchStepCount() async {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: .now)
+        let endDate = calendar.date(byAdding: .day, value: 1, to: today)!
+        let startDate = calendar.date(byAdding: .day, value: -28, to: endDate)!
+        
+        let queryPredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+        let quantityType = HKQuantityType(.stepCount)
+        let samplePredicate = HKSamplePredicate.quantitySample(type: quantityType, predicate: queryPredicate)
+        
+        let stepsQuery = HKStatisticsCollectionQueryDescriptor(
+            predicate: samplePredicate,
+            options: .cumulativeSum,
+            anchorDate: endDate,
+            intervalComponents: DateComponents(day: 1)
+        )
+        
+        let stepCounts = try! await stepsQuery.result(for: store)
+    }
+    
+    
+    func fetchWeightData() async {
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: .now)
+        let endDate = calendar.date(byAdding: .day, value: 1, to: today)!
+        let startDate = calendar.date(byAdding: .day, value: -28, to: endDate)!
+        
+        let queryPredicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate)
+        let quantityType = HKQuantityType(.bodyMass)
+        let samplePredicate = HKSamplePredicate.quantitySample(type: quantityType, predicate: queryPredicate)
+        
+        let weightQuery = HKStatisticsCollectionQueryDescriptor(
+            predicate: samplePredicate,
+            options: .mostRecent,
+            anchorDate: endDate,
+            intervalComponents: DateComponents(day: 1)
+        )
+        
+        let weights = try! await weightQuery.result(for: store)
+    }
+    
+    
 //    func addSimulatedData() async {
 //        var mockSamples = [HKQuantitySample]()
 //        
