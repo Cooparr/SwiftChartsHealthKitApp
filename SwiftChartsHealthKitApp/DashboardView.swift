@@ -36,6 +36,7 @@ enum HealthMetricContext: CaseIterable, Identifiable {
 
 struct DashboardView: View {
     
+    @Environment(HealthKitManager.self) private var hkManager
     @AppStorage("hasSeenPermissionRequest") private var hasSeenPermissionRequest = false
     @State private var isShowingPermissionSheet = false
     @State private var selectedStat: HealthMetricContext = .steps
@@ -103,7 +104,7 @@ struct DashboardView: View {
                 }
             }
             .padding()
-            .onAppear {
+            .task {
                 isShowingPermissionSheet = !hasSeenPermissionRequest
             }
             .navigationTitle("Dashboard")
