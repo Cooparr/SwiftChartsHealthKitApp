@@ -133,6 +133,16 @@
         }
       }
     },
+    "Selected Metrics" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택된 지표"
+          }
+        }
+      }
+    },
     "Selected Stat" : {
       "localizations" : {
         "ko" : {
