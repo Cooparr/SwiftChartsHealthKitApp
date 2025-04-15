@@ -38,9 +38,13 @@ import Observation
             intervalComponents: DateComponents(day: 1)
         )
         
-        let stepCounts = try! await stepsQuery.result(for: store)
-        stepData = stepCounts.statistics().compactMap { stepData in
-            HealthMetric(date: stepData.startDate, value: stepData.sumQuantity()?.doubleValue(for: .count()) ?? 0)
+        do {
+            let stepCounts = try await stepsQuery.result(for: store)
+            stepData = stepCounts.statistics().compactMap { stepData in
+                HealthMetric(date: stepData.startDate, value: stepData.sumQuantity()?.doubleValue(for: .count()) ?? 0)
+            }
+        } catch {
+            print("Fetch step count error!")
         }
     }
     
@@ -62,9 +66,13 @@ import Observation
             intervalComponents: DateComponents(day: 1)
         )
         
-        let weights = try! await weightQuery.result(for: store)
-        weightData = weights.statistics().compactMap { weightData in
-            HealthMetric(date: weightData.startDate, value: weightData.mostRecentQuantity()?.doubleValue(for: .gram()) ?? 0)
+        do {
+            let weights = try await weightQuery.result(for: store)
+            weightData = weights.statistics().compactMap { weightData in
+                HealthMetric(date: weightData.startDate, value: weightData.mostRecentQuantity()?.doubleValue(for: .gram()) ?? 0)
+            }
+        } catch {
+            print("Fetch weight error!")
         }
     }
     
