@@ -50,7 +50,7 @@ struct HealthKitPermissionView: View {
                 switch permissionResult {
                 case .success:
                     dismiss()
-                case .failure(let error):
+                case .failure:
                     //TODO: Add error handling
                     dismiss()
                 }

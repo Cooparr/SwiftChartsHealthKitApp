@@ -11,6 +11,16 @@
         }
       }
     },
+    "Average" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "평균"
+          }
+        }
+      }
+    },
     "Averages" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -22,8 +32,15 @@
         }
       }
     },
-    "Avg: 10K Steps" : {
-
+    "Avg: %lld steps" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "평균: %lld 걸음"
+          }
+        }
+      }
     },
     "Dashboard" : {
       "localizations" : {
@@ -107,10 +124,24 @@
       }
     },
     "Last 28 Days" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최근 28일"
+          }
+        }
+      }
     },
     "Selected Stat" : {
-
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택된 통계"
+          }
+        }
+      }
     },
     "Steps" : {
       "extractionState" : "manual",
